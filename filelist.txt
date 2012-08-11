@@ -1,0 +1,15 @@
+# NOTE:
+# add absolute path of the files to be maintained here, each one line
+# empty line and line starts with `#` will be ignored
+#
+#
+# Example:
+#     [X] ~/.vimrc
+#     [O] /home/username/.vimrc
+
+#begin <- it makes no sense
+
+/home/kelvin/.vimrc
+/etc/hosts
+
+#end
