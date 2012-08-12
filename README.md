@@ -16,7 +16,7 @@ INIT
     $ git clone git://github.com/mckelvin/archlinux-conf.git archlinux-conf
     $ cd archlinux-conf
     $ make init
-
+    edit filelist.txt and filelist_sudo.txt
 BACKUP
 
     $ make backup
