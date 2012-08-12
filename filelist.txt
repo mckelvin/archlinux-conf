@@ -1,15 +1,22 @@
 # NOTE:
-# add absolute path of the files to be maintained here, each one line
-# empty line and line starts with `#` will be ignored
+# add absolute path of the files to be maintained here(the `~` and `*` also allowed) 
+# each one line. empty line or line starts with `#` will be ignored
 #
 #
 # Example:
-#     [X] ~/.vimrc
-#     [O] /home/username/.vimrc
+#     ~/.vim/
+#     ~/foo bar/path_with_space.sh
+#     ~/.vimrc
+#     /etc/locale.gen
+#     /etc/hosts
+#     /home/kelvin/.fonts/UbuntuMono-*.ttf
 
-#begin <- it makes no sense
 
-/home/kelvin/.vimrc
+# in ~
+~/.vim/
+~/.config/font-manager/local.conf
+~/.fonts/UbuntuMono-*.ttf
 /etc/hosts
+/etc
 
-#end
+# in /

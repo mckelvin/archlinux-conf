@@ -3,18 +3,19 @@
 import os
 import sys
 import subprocess
+import glob
 #from distutils.file_util import copy_file
 
 CONST_BUNDLE_DIR = 'bundle'
 CONST_FILE_LIST = 'filelist.txt'
-CONST_CP_OK = 'cp %s %s'
-CONST_CP_EXCEPT = '''WARN: except happened when copy from `%s` to `%s`,ignored.\n\t%s'''
+CONST_CP_OK = '%s'
+CONST_CP_EXCEPT = '''WARN: except happened when copy from `%s` to `%s`,ignored.\n\treason:%s'''
 CONST_BACKUP_DONE = 'DONE: all file in file_list.txt have been backed up in ./bundle'
 CONST_RESTORE_DONE = 'DONE: all file in file_list.txt have been restored from ./bundle'
 
 #TODO: true log
 def log(msg):
-    sys.stdout.write(msg)
+    sys.stdout.write(msg + '\n')
     sys.stdout.flush()
 
 class ArchConf:
@@ -32,17 +33,29 @@ class ArchConf:
     
     def copy_file(self, from_path, to_path):
         assert self.root == os.path.abspath(os.curdir)
-        process = subprocess.Popen(['cp', '--parent',from_path, to_path], stdout=subprocess.PIPE)
-        output = process.communicate()[0]
-        print output
+        if from_path.startswith('~'):
+            from_path = from_path.replace('~', os.environ['HOME'], 1)
+        if to_path.startswith('~'):
+            to_path = to_path.replace('~', os.environ['HOME'], 1)
+        from_path_checked = glob.glob(from_path)
+        command = ''
+        response = ''
+        if len(from_path_checked) == 0:
+            response = '[the from path does not exists]'
+        else:
+            command = ['cp', '--parent', '-t', to_path] + from_path_checked
+            if len(from_path_checked) == 1 and os.path.isdir(from_path_checked[0]):
+                command.insert(1, '-r')
+            process = subprocess.Popen(command,stdout=subprocess.PIPE)
+            response = process.communicate()[0]
+        return (' '.join(command or []), response or '')
 
     def copy(self, from_path, to_path):
-        try:
-            self.copy_file(from_path, to_path)
-        except Exception, err:
+        cmd, err = self.copy_file(from_path, to_path)
+        if err:
             log(CONST_CP_EXCEPT % (from_path, to_path, err))
         else:
-            log(CONST_CP_OK % (from_path, to_path))
+            log(CONST_CP_OK % cmd)
 
     def backup(self, FILE_LIST=CONST_FILE_LIST):
         file_list = open(os.path.join(self.repo,FILE_LIST))
