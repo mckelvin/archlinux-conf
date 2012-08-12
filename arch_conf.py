@@ -18,6 +18,7 @@ def log(msg):
     sys.stdout.write(msg + '\n')
     sys.stdout.flush()
 
+
 class ArchConf:
     def __init__(self, BUNDLE_DIR=CONST_BUNDLE_DIR):
         """make sure an exists bundle dir"""
@@ -73,20 +74,25 @@ class ArchConf:
         
 
 def main(argv):
-    ab = ArchConf()
-    if len(argv) == 2:
+    if len(argv) >= 2:
+        ab = ArchConf()
+        try:
+            cfl = argv[2]
+        except:    
+            cfl = CONST_FILE_LIST
+        finally:
+            print cfl
         if '-b' in argv[1] or '--backup' in argv[1]:
-            ab.backup()
+            ab.backup(FILE_LIST=cfl)
         elif '-r' in argv[1] or '--restore' in argv[1]:
-            ab.restore()
+            ab.restore(FILE_LIST=cfl)
     else:
         print ''
         print 'usage:'
         print ''
-        print '    backup via: python', argv[0], '-b' 
-        print '    restore via: python', argv[0], '-r' 
+        print '    backup via: python', argv[0], '-b [filelist.txt]' 
+        print '    restore via: python', argv[0], '-r [filelist.txt]' 
     return 0
 
 if __name__ == '__main__':
-    sys.exit(main(['foo','-b']))
-    #sys.exit(main(sys.argv))
+    sys.exit(main(sys.argv))

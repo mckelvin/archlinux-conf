@@ -1,24 +1,28 @@
 # NOTE:
-# add absolute path of the files to be maintained here(the `~` and `*` also allowed) 
+# add absolute path of the files to be maintained here(`*` also allowed)
 # each one line. empty line or line starts with `#` will be ignored
 #
 #
 # Example:
-#     ~/.vim/
-#     ~/foo bar/path_with_space.sh
-#     ~/.vimrc
+#     ~/foo/bar.txt <-- ~ is depressed. when you run it in root, ...
+#     /home/kelvin/.vim/
+#     /home/kelvin/foo bar/path_with_space.sh
+#     /home/kelvin/.vimrc
 #     /etc/locale.gen
 #     /etc/hosts
 #     /home/kelvin/.fonts/UbuntuMono-*.ttf
 
 
-# in ~
-~/.vim/
-~/.config/font-manager/local.conf
-~/.fonts/UbuntuMono-*.ttf
-
-# in /
-/etc/hosts
-/etc/rc.conf
-/etc/pacman.conf
-/etc/pacman.d/mirrorlist
+# in /home/kelvin
+/home/kelvin/.profile
+/home/kelvin/.fonts.conf
+/home/kelvin/.config/font-manager/local.conf
+/home/kelvin/.fonts/UbuntuMono-*.ttf
+/home/kelvin/.xinitrc
+/home/kelvin/.xprofile
+/home/kelvin/.bashrc
+/home/kelvin/.bash_profile
+/home/kelvin/.bash_aliases
+/home/kelvin/.bash_logout
+/home/kelvin/.zshrc
+/home/kelvin/.oh-my-zsh/themes/kelvin.zsh-theme

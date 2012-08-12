@@ -1,0 +1,16 @@
+# in /
+
+/boot/grub/grub.cfg
+/etc/profile
+/etc/sudoers
+/etc/hosts
+/etc/hosts.allow
+/etc/hosts.deny
+/etc/inputrc
+/etc/locale.gen
+/etc/rc.conf
+/etc/hostname
+/etc/fonts/fonts.conf
+/etc/pacman.conf
+/etc/pacman.d/mirrorlist
+/etc/gtk-2.0/gtk.immodules
