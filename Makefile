@@ -3,10 +3,10 @@ SHELL=/bin/bash
 init:
 	sudo rm -rf bundle/
 	mkdir -p bundle
-	rm pacman.txt
-	rm yaourt.txt
-	rm pip-requirements.txt
-	rm pip-requirements_sudo.txt
+	rm -f pacman.txt
+	rm -f yaourt.txt
+	rm -f pip-requirements.txt
+	rm -f pip-requirements_sudo.txt
 
 #
 # pip # http://www.pip-installer.org/en/latest/requirements.html
