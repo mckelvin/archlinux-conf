@@ -16,7 +16,9 @@
 ~/.vim/
 ~/.config/font-manager/local.conf
 ~/.fonts/UbuntuMono-*.ttf
-/etc/hosts
-/etc
 
 # in /
+/etc/hosts
+/etc/rc.conf
+/etc/pacman.conf
+/etc/pacman.d/mirrorlist
