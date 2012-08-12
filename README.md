@@ -42,3 +42,18 @@ files
 - yaourt.txt *list of yaourt packages*
 
 only `filelist_sudo.txt` and `filelist.txt` need to be maintained manually,other \*.txt can be gen automaticly after `make backup`
+
+
+# TODO
+
+- file mod issue
+
+
+- arch_conf.py
+
+    16:#TODO: true log
+
+- Makefile
+
+    42:# TODO if 0 package need to be install
+

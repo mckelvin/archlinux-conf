@@ -42,5 +42,7 @@ restore_package:
 	# TODO if 0 package need to be install
 	yaourt -S yaourt $(shell comm -23 yaourt.txt <(yaourt -Qmq|sort))
 
-backup: backup_pip backup_arch_conf backup_package 
+backup: backup_pip backup_arch_conf backup_package
+	@backup done,you can `git commit` if you\'d like to use this repo as a backup media
 restore: restore_package restore_arch_conf restore_pip
+	@restore done
